@@ -28,11 +28,11 @@ steps:
      - deploy
      - node-api-service
      - --allow-unauthenticated
-     - --set-env-vars=DB_USER=$$DB_USER
-     - --set-env-vars=DB_PASS=$$DB_PASSWORD 
-     - --set-env-vars=DB_DATABASE=$$DB_DATABASE 
-     - --set-env-vars=DB_HOST=$$DB_HOST 
-     - --set-env-vars=DB_PORT=$$DB_PORT 
+     - --set-env-vars=DB_USER=postgres
+     - --set-env-vars=DB_PASS=user@123
+     - --set-env-vars=DB_DATABASE=userdb 
+     - --set-env-vars=DB_HOST=104.197.4.200 
+     - --set-env-vars=DB_PORT=5432
      - --image=gcr.io/$_PROJECT_ID/node-api:$COMMIT_SHA
      - --port=8080
      - --region=us-central1
