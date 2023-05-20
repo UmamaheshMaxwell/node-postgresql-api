@@ -10,7 +10,7 @@ steps:
    # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
-    secretEnv: ['DB_USER', 'DB_PASSWORD', 'DB_DATABASE', 'DB_INSTANCE_IP']
+    secretEnv: ['DB_USER', 'DB_PASSWORD', 'DB_DATABASE', 'DB_HOST']
     args: 
      - run, 
      - deploy,  
