@@ -16,7 +16,7 @@ steps:
      - deploy
      - node-api-service
      - --allow-unauthenticated
-     - --set-env-vars=DB_USER=$$DB_USER=
+     - --set-env-vars=DB_USER=$$DB_USER
      - --set-env-vars=DB_PASS=$$DB_PASSWORD 
      - --set-env-vars=DB_DATABASE=$$DB_DATABASE 
      - --set-env-vars=DB_HOST=$$DB_HOST 
