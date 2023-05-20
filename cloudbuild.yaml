@@ -11,7 +11,7 @@ steps:
   - id: 'Secrets in Pipeline'
     name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: '/bin/bash'
-    secretEnv: ['DB_USER', 'DB_PASSWORD', 'DB_DATABASE', 'DB_HOST']
+    secretEnv: ['DB_USER', 'DB_PASSWORD', 'DB_DATABASE', 'DB_HOST', 'DB_PORT']
     args:
     - '-c'
     - |
@@ -19,9 +19,10 @@ steps:
       echo "$$DB_PASSWORD"
       echo "$$DB_DATABASE"
       echo "$$DB_HOST"
+      echo "$$DB_PORT"
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
-    secretEnv: ['DB_USER', 'DB_PASSWORD', 'DB_DATABASE', 'DB_HOST']
+    secretEnv: ['DB_USER', 'DB_PASSWORD', 'DB_DATABASE', 'DB_HOST', 'DB_PORT']
     args: 
      - run
      - deploy
@@ -31,6 +32,7 @@ steps:
      - --set-env-vars=DB_PASS=$$DB_PASSWORD 
      - --set-env-vars=DB_DATABASE=$$DB_DATABASE 
      - --set-env-vars=DB_HOST=$$DB_HOST 
+     - --set-env-vars=DB_PORT=$$DB_PORT 
      - --image=gcr.io/$_PROJECT_ID/node-api:$COMMIT_SHA
      - --port=8080
      - --region=us-central1
@@ -45,3 +47,5 @@ availableSecrets:
     env: 'DB_DATABASE'
   - versionName: projects/$_PROJECT_ID/secrets/DB_HOST/versions/latest
     env: 'DB_HOST'
+  - versionName: projects/$_PROJECT_ID/secrets/DB_PORT/versions/latest
+    env: 'DB_PORT'
