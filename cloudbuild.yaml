@@ -3,10 +3,10 @@ substitutions:
 steps:
   #Build the container Image 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ["build", "-t", "gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA", "."]
+    args: ["build", "-t", "gcr.io/$_PROJECT_ID/node-app:$COMMIT_SHA", "."]
   # pusth the repo to container registry 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ["push", "gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA" ]
+    args: ["push", "gcr.io/$_PROJECT_ID/node-app:$COMMIT_SHA" ]
    # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
@@ -20,7 +20,7 @@ steps:
      - --set-env-vars=DB_PASS=$$DB_PASSWORD 
      - --set-env-vars=DB_DATABASE=$$DB_DATABASE 
      - --set-env-vars=DB_HOST=$$DB_HOST 
-     - --image=gcr.io/$_PROJECT_ID/node-api:$SHORT_SHA
+     - --image=gcr.io/$_PROJECT_ID/node-api:$COMMIT_SHA
      - --region=us-central1
 availableSecrets:
   secretManager:
