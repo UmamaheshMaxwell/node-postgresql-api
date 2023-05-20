@@ -24,13 +24,11 @@ steps:
      - --region=us-central1
 availableSecrets:
   secretManager:
-  - versionName: projects/$_PROJECT_ID/secrets/DB_USER
+  - versionName: projects/$_PROJECT_ID/secrets/DB_USER/versions/latest
     env: 'DB_USER'
-  - versionName: projects/$_PROJECT_ID/secrets/DB_PASS
+  - versionName: projects/$_PROJECT_ID/secrets/DB_PASS/versions/latest
     env: 'DB_PASSWORD'
-  - versionName: projects/$_PROJECT_ID/secrets/DB_DATABASE
+  - versionName: projects/$_PROJECT_ID/secrets/DB_DATABASE/versions/latest
     env: 'DB_DATABASE'
-  - versionName: projects/$_PROJECT_ID/secrets/DB_HOST
+  - versionName: projects/$_PROJECT_ID/secrets/DB_HOST/versions/latest
     env: 'DB_INSTANCE_IP'
-
-      
