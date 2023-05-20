@@ -21,7 +21,9 @@ steps:
      - --set-env-vars=DB_DATABASE=$DB_DATABASE 
      - --set-env-vars=DB_HOST=$DB_HOST 
      - --image=gcr.io/$_PROJECT_ID/node-api:$COMMIT_SHA
+     - --port=8080
      - --region=us-central1
+
 availableSecrets:
   secretManager:
   - versionName: projects/$_PROJECT_ID/secrets/DB_USER/versions/latest
