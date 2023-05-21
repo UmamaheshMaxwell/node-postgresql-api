@@ -7,7 +7,7 @@ app.use(cors())
 app.use(express.json())
 
 router.get("/",(req, res) => {
-    res.send("Welcome to Node API ")
+  res.send("Welcome to Node API ")
 })
 
 app.use("/api", router)
