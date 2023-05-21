@@ -7,6 +7,7 @@ router.get("/user", async (req, res) => {
     res.json(data)
 })
 
+
 router.post("/user", async (req, res) => {
     const body = req.body
     const user = await User.create(body)
