@@ -28,11 +28,12 @@ steps:
      - deploy
      - node-api-service
      - --allow-unauthenticated
-     - --set-env-vars=DB_USER=postgres
-     - --set-env-vars=DB_PASS=user@123
-     - --set-env-vars=DB_DATABASE=userdb 
-     - --set-env-vars=DB_HOST=10.68.0.7
-     - --set-env-vars=DB_PORT=5432
+    #  - --set-env-vars=DB_USER=postgres
+    #  - --set-env-vars=DB_PASS=user@123
+    #  - --set-env-vars=DB_DATABASE=userdb 
+    #  - --set-env-vars=DB_HOST=10.68.0.7
+    #  - --set-env-vars=DB_PORT=5432
+     - --set-secrets=DB_USER=projects/$_PROJECT_ID/secrets/DB_USER/versions/latest,DB_PASS=projects/$_PROJECT_ID/secrets/DB_PASSWORD/versions/latest,DB_DATABASE=projects/$_PROJECT_ID/secrets/DB_DATABASE/versions/latest,DB_HOST=projects/$_PROJECT_ID/secrets/DB_HOST/versions/latest,DB_PORT=projects/$_PROJECT_ID/secrets/DB_PORT/versions/latest
      - --image=gcr.io/$_PROJECT_ID/node-api:$COMMIT_SHA
      - --vpc-connector=sqlconnect
      - --port=8080
