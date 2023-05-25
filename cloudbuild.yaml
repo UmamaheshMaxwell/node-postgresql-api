@@ -31,7 +31,7 @@ steps:
      - --set-env-vars=DB_USER=postgres
      - --set-env-vars=DB_PASS=user@123
      - --set-env-vars=DB_DATABASE=userdb 
-     - --set-env-vars=DB_HOST=10.68.0.5
+     - --set-env-vars=DB_HOST=10.68.0.7
      - --set-env-vars=DB_PORT=5432
      - --image=gcr.io/$_PROJECT_ID/node-api:$COMMIT_SHA
      - --vpc-connector=sqlconnect
